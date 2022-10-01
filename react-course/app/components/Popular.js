@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Nav from './Nav'
 export default class Popular extends React.Component {
   constructor(props) {
     super(props)
@@ -13,19 +13,12 @@ export default class Popular extends React.Component {
     this.setState({ selectedLanguage })
   }
   render() {
-    const languages = ['All', 'JavaScript', 'Ruby', 'Java', 'CSS', 'Python']
     return (
       <main>
-        <select
-          value={this.state.selectedLanguage}
-          onChange={(event) => this.updateLanguage(event.target.value)}
-        >
-          {languages.map((language) => (
-            <option key={language} value={language}>
-              {language}
-            </option>
-          ))}
-        </select>
+        <Nav
+          selected={this.state.selectedLanguage}
+          onUpdateLanguage={this.updateLanguage}
+        />
         {JSON.stringify(this.state, null, 2)}
       </main>
     )
