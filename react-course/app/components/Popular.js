@@ -1,5 +1,6 @@
 import React from 'react'
 import Nav from './Nav'
+import Table from './table/Table'
 import { fetchPopularRepos } from '../utlis/api'
 export default class Popular extends React.Component {
   constructor(props) {
@@ -45,7 +46,7 @@ export default class Popular extends React.Component {
           />
         </div>
         {error && <p className="text-center error">{error}</p>}
-        {repos && JSON.stringify(this.state, null, 2)}
+        {repos && <Table repos={repos} />}
       </main>
     )
   }
