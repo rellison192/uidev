@@ -2,6 +2,8 @@ import React from 'react'
 import PlayerInput from './PlayerInput'
 import PlayerPreview from './PlayerPreview'
 import Instructions from './Instructions'
+import Results from './Results'
+
 export default class Battle extends React.Component {
   constructor(props) {
     super(props)
@@ -9,6 +11,7 @@ export default class Battle extends React.Component {
     this.state = {
       playerOne: null,
       playerTwo: null,
+      battle: false,
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleReset = this.handleReset.bind(this)
@@ -20,13 +23,22 @@ export default class Battle extends React.Component {
     this.setState({ [id]: null })
   }
   render() {
-    const { playerOne, playerTwo } = this.state
+    const { playerOne, playerTwo, battle } = this.state
     const disabled = !playerOne || !playerTwo
+    if (battle) {
+      return <Results playerOne={playerOne} playerTwo={playerTwo} />
+    }
+
     return (
       <main className="stack main-stack">
         <div className="split">
           <h2>Players</h2>
-          <button type="button" className="btn primary" disabled={disabled}>
+          <button
+            type="button"
+            className="btn primary"
+            disabled={disabled}
+            onClick={() => this.setState({ battle: true })}
+          >
             Battle
           </button>
         </div>
