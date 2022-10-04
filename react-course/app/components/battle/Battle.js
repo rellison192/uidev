@@ -9,8 +9,8 @@ export default class Battle extends React.Component {
     super(props)
 
     this.state = {
-      playerOne: null,
-      playerTwo: null,
+      playerOne: "tylermcginnis",
+      playerTwo: "wesbos",
       battle: false,
     }
     this.handleSubmit = this.handleSubmit.bind(this)
