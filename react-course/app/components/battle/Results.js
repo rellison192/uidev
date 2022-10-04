@@ -1,5 +1,6 @@
 import React from 'react'
 import Card from './Card'
+import Loading from '../loading/Loading'
 import { battle } from '../../utlis/api'
 
 export default class Results extends React.Component {
@@ -32,7 +33,7 @@ export default class Results extends React.Component {
     const { winner, loser, loading, error } = this.state
 
 
-    if (loading === true) return <p className="text-center">...Loading</p>
+    if (loading === true) return <Loading text="Battle" />
     if (error) return <p className="text-center error">{error}</p>
 
     return (
