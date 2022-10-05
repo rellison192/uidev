@@ -9,7 +9,7 @@ class App extends React.Component {
     return (
       <div className="light">
         <div className="container">
-          <Battle />
+          <Popular />
         </div>
       </div>
     )
@@ -17,4 +17,3 @@ class App extends React.Component {
 }
 const root = ReactDom.createRoot(document.getElementById('app'))
 root.render(<App />)
- 

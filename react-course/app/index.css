@@ -420,6 +420,11 @@ tbody td:first-child {
   opacity: 0.75;
 }
 
+.tooltip-container {
+  position: relative;
+  display: flex;
+}
+
 .tooltip {
   position: relative;
   box-sizing: border-box;
