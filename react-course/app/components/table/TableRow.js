@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import MoreInfo from './MoreInfo'
 import Tooltip from '../Tooltip'
+
 export default function TableRow({
   index,
   owner,

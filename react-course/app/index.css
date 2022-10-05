@@ -420,7 +420,7 @@ tbody td:first-child {
   opacity: 0.75;
 }
 
-.tooltip-container {
+.hover-container {
   position: relative;
   display: flex;
 }
