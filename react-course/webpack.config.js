@@ -7,6 +7,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index_bundle.js',
+    publicPath: "/",
   },
   module: {
     rules: [
@@ -21,4 +22,7 @@ module.exports = {
     }),
     new Dotenv(),
   ],
+  devServer: {
+    historyApiFallback: true,
+  },
 };
