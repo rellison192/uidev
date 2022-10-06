@@ -1,17 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import withHover from './withHover'
+import Hover from './Hover'
 
-function Tooltip({ children, element, hovering }) {
+export default function Tooltip({ children, element }) {
   return (
-    <>
-      {hovering && element}
-      {children}
-    </>
+    <Hover>
+      {(hovering) => {
+        return (
+          <>
+            {hovering === true && element}
+            {children}
+          </>
+        )
+      }}
+    </Hover>
   )
 }
 Tooltip.propTypes = {
   children: PropTypes.node.isRequired,
   element: PropTypes.node.isRequired,
 }
-export default withHover(Tooltip)
+
