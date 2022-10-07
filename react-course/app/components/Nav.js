@@ -1,24 +1,49 @@
 import React from 'react'
-import PropTypes from "prop-types"
+import { NavLink } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { sunIcon, moonIcon } from './icons'
 
-export default function Nav({ selected, onUpdateLanguage }) {
-  const languages = ['All', 'JavaScript', 'Ruby', 'Java', 'CSS', 'Python']
-
+export default function Nav({ theme, toggleTheme }) {
   return (
-    <select
-      value={selected}
-      onChange={(event) => onUpdateLanguage(event.target.value)}
-    >
-      {languages.map((language) => (
-        <option key={language} value={language}>
-          {language}
-        </option>
-      ))}
-    </select>
+    <nav className="split">
+      <NavLink
+        to="/"
+        className={(isActive) => 'nav-link' + (isActive ? ' active' : '')}
+      >
+        Github Battle
+      </NavLink>
+      <ul className="row">
+        <li>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              'nav-link' + (isActive ? ' active' : '')
+            }
+          >
+            Popular
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/Battle"
+            className={({ isActive }) =>
+              'nav-link' + (isActive ? ' active' : '')
+            }
+          >
+            Battle
+          </NavLink>
+        </li>
+        <li>
+          <button type="button" className="btn secondary icon" onClick={toggleTheme}>
+            {theme === "light" ? moonIcon : sunIcon}
+          </button>
+        </li>
+      </ul>
+    </nav>
   )
 }
 
 Nav.propTypes = {
-  selected: PropTypes.string.isRequired,
-  onUpdateLanguage: PropTypes.func.isRequired
+  theme: PropTypes.string.isRequired,
+  toggleTheme: PropTypes.func.isRequired,
 }

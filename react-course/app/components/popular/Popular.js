@@ -1,7 +1,8 @@
 import React from 'react'
-import Nav from './Nav'
-import Table from './table/Table'
-import { fetchPopularRepos } from '../utlis/api'
+import LanguagesSelect from './LanguagesSelect'
+import Table from '../table/Table'
+import { fetchPopularRepos } from '../../utlis/api'
+
 export default class Popular extends React.Component {
   constructor(props) {
     super(props)
@@ -40,7 +41,7 @@ export default class Popular extends React.Component {
       <main className="stack main-stack animate-in">
         <div className="split">
           <h2>Popular</h2>
-          <Nav
+          <LanguagesSelect
             selected={selectedLanguage}
             onUpdateLanguage={this.updateLanguage}
           />
