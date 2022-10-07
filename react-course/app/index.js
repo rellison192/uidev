@@ -3,6 +3,7 @@ import ReactDom from 'react-dom/client'
 import Popular from './components/popular/Popular'
 import Battle from './components/battle/Battle'
 import Nav from './components/Nav'
+import Results from './components/battle/Results'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './index.css'
 
@@ -30,6 +31,7 @@ class App extends React.Component {
             <Routes>
               <Route path="/" element={<Popular />} />
               <Route path="/battle" element={<Battle />} />
+              <Route path="/results" element={<Results />} />
             </Routes>
           </div>
         </div>

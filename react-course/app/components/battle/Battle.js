@@ -2,15 +2,15 @@ import React from 'react'
 import PlayerInput from './PlayerInput'
 import PlayerPreview from './PlayerPreview'
 import Instructions from './Instructions'
-import Results from './Results'
+import { Link } from 'react-router-dom'
 
 export default class Battle extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      playerOne: "tylermcginnis",
-      playerTwo: "wesbos",
+      playerOne: '',
+      playerTwo: '',
       battle: false,
     }
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -23,24 +23,22 @@ export default class Battle extends React.Component {
     this.setState({ [id]: null })
   }
   render() {
-    const { playerOne, playerTwo, battle } = this.state
+    const { playerOne, playerTwo } = this.state
     const disabled = !playerOne || !playerTwo
-    if (battle) {
-      return <Results playerOne={playerOne} playerTwo={playerTwo} />
-    }
 
     return (
       <main className="stack main-stack">
         <div className="split">
           <h2>Players</h2>
-          <button
-            type="button"
-            className="btn primary"
-            disabled={disabled}
-            onClick={() => this.setState({ battle: true })}
+          <Link
+            className={`btn primary ${disabled ? 'disabled' : ''}`}
+            to={{
+              pathname: '/results',
+              search: `?playerone=${playerOne}&playertwo=${playerTwo}`,
+            }}
           >
             Battle
-          </button>
+          </Link>
         </div>
         <section className="grid">
           {!playerOne ? (

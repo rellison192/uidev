@@ -1,9 +1,11 @@
 import React from 'react'
 import Card from './Card'
 import Loading from '../loading/Loading'
+import { Link } from 'react-router-dom'
 import { battle } from '../../utlis/api'
+import withSearchParams from '../withSearchParams'
 
-export default class Results extends React.Component {
+class Results extends React.Component {
   constructor(props) {
     super(props)
 
@@ -15,7 +17,10 @@ export default class Results extends React.Component {
     }
   }
   componentDidMount() {
-    const { playerOne, playerTwo } = this.props
+    const sp = this.props.router.searchParams
+    const playerOne = sp.get('playerone')
+    const playerTwo = sp.get('playertwo')
+
     battle([playerOne, playerTwo])
       .then((players) =>
         this.setState({
@@ -32,7 +37,6 @@ export default class Results extends React.Component {
   render() {
     const { winner, loser, loading, error } = this.state
 
-
     if (loading === true) return <Loading text="Battle" />
     if (error) return <p className="text-center error">{error}</p>
 
@@ -40,13 +44,16 @@ export default class Results extends React.Component {
       <main className="animate-in stack main-stack">
         <div className="split">
           <h2>Results</h2>
+          <Link to="/battle" className="btn secondary">
+            Reset
+          </Link>
         </div>
         <section className="grid">
           <article className="results-container">
             <Card profile={winner.profile} />
             <p className="results">
               <span>
-                {winner.score === loser.score ? "Tie" : "Winner"}{" "}
+                {winner.score === loser.score ? 'Tie' : 'Winner'}{' '}
                 {winner.score.toLocaleString()}
               </span>
               {winner.score != loser.score && (
@@ -62,8 +69,8 @@ export default class Results extends React.Component {
             <Card profile={loser.profile} />
             <p className="results">
               <span>
-              {winner.score === loser.score ? "Tie" : "Loser"}{" "}
-              {loser.score.toLocaleString()}
+                {winner.score === loser.score ? 'Tie' : 'Loser'}{' '}
+                {loser.score.toLocaleString()}
               </span>
             </p>
           </article>
@@ -72,3 +79,5 @@ export default class Results extends React.Component {
     )
   }
 }
+
+export default withSearchParams(Results)
