@@ -6,15 +6,11 @@ import { battle } from '../../utlis/api'
 import withSearchParams from '../withSearchParams'
 
 class Results extends React.Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      winner: null,
-      loser: null,
-      loading: true,
-      error: null,
-    }
+  state = {
+    winner: null,
+    loser: null,
+    loading: true,
+    error: null,
   }
   componentDidMount() {
     const sp = this.props.router.searchParams

@@ -8,7 +8,7 @@ export default function MoreInfo({
   updated_at,
   watchers,
   login,
-  type
+  type,
 }) {
   return (
     <ul className="tooltip stack">
@@ -55,5 +55,5 @@ MoreInfo.propTypes = {
   watchers: PropTypes.number.isRequired,
   type: PropTypes.string.isRequired,
   login: PropTypes.string.isRequired,
-  forks_count: PropTypes.number
+  forks_count: PropTypes.number,
 }

@@ -7,15 +7,19 @@ export default function Nav({ theme, toggleTheme }) {
   return (
     <nav className="split">
       <NavLink
+
         to="/"
-        className={(isActive) => 'nav-link' + (isActive ? ' active' : '')}
+        end
+        className={({ isActive }) => 'nav-link' + (isActive ? ' active' : '')}
       >
         Github Battle
       </NavLink>
       <ul className="row">
         <li>
           <NavLink
+
             to="/"
+            end
             className={({ isActive }) =>
               'nav-link' + (isActive ? ' active' : '')
             }
@@ -25,7 +29,7 @@ export default function Nav({ theme, toggleTheme }) {
         </li>
         <li>
           <NavLink
-            to="/Battle"
+            to="/battle"
             className={({ isActive }) =>
               'nav-link' + (isActive ? ' active' : '')
             }
@@ -34,8 +38,12 @@ export default function Nav({ theme, toggleTheme }) {
           </NavLink>
         </li>
         <li>
-          <button type="button" className="btn secondary icon" onClick={toggleTheme}>
-            {theme === "light" ? moonIcon : sunIcon}
+          <button
+            type="button"
+            className="btn secondary icon"
+            onClick={toggleTheme}
+          >
+            {theme === 'light' ? moonIcon : sunIcon}
           </button>
         </li>
       </ul>

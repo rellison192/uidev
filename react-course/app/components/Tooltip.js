@@ -20,4 +20,3 @@ Tooltip.propTypes = {
   children: PropTypes.node.isRequired,
   element: PropTypes.node.isRequired,
 }
-

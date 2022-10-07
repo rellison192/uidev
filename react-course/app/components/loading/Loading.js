@@ -3,12 +3,16 @@ import PropTypes from 'prop-types'
 import Delayed from './Delayed'
 
 export default class Loading extends React.Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      content: this.props.text,
-    }
+  static propTypes = {
+    text: PropTypes.string,
+    speed: PropTypes.number,
+  }
+  static defaultProps = {
+    text: 'Loading',
+    speed: 300,
+  }
+  state = {
+    content: this.props.text,
   }
   componentDidMount() {
     const { text, speed } = this.props
@@ -22,14 +26,10 @@ export default class Loading extends React.Component {
     window.clearInterval(this.interval)
   }
   render() {
-    return <Delayed><p className="loading">{this.state.content}</p></Delayed>
+    return (
+      <Delayed>
+        <p className="loading">{this.state.content}</p>
+      </Delayed>
+    )
   }
-}
-Loading.propTypes = {
-  text: PropTypes.string,
-  speed: PropTypes.number,
-}
-Loading.defaultProps = {
-  text: 'Loading',
-  speed: 300,
 }

@@ -2,19 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 export default class PlayerInput extends React.Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      username: '',
-    }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+  static propTypes = {
+    label: PropTypes.string.isRequired,
+    onSubmit: PropTypes.func.isRequired,
   }
-  handleChange(event) {
+  state = {
+    username: '',
+  }
+  handleChange = (event) => {
     this.setState({ username: event.target.value })
   }
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault()
     this.props.onSubmit(this.state.username)
   }
@@ -42,8 +40,4 @@ export default class PlayerInput extends React.Component {
       </form>
     )
   }
-}
-PlayerInput.propTypes = {
-  label: PropTypes.string.isRequired,
-  onSubmit: PropTypes.func.isRequired,
 }
