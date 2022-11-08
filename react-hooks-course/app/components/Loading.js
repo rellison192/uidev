@@ -13,16 +13,19 @@ const styles = {
 }
 
 export default function Loading({ speed = 300, text = 'Loading' }) {
-  const [content, setContext] = React.useState(text)
+  const [content, setContent] = React.useState(text)
 
   React.useEffect(() => {
     const interval = window.setInterval(() => {
-      content === text + '...'
-        ? setContext(text)
-        : setContext((content) => content + '.')
+      setContent((content) => {
+        return content === `${text}...`
+          ? text
+          : `${content}.`
+      })
     }, speed)
     return () => window.clearInterval(interval)
   }, [text, speed])
+
   return <p style={styles.content}>{content}</p>
 }
 
